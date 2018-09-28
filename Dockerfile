@@ -1,0 +1,19 @@
+FROM alpine:edge
+ENV REDIS_VERSION=4.0.10-r0
+
+# Install redis.
+RUN apk upgrade --update --no-cache && \
+    apk add --update --no-cache redis=$REDIS_VERSION && \
+    rm -rf /var/cache/apk/* && \
+    mkdir -p /data/redis && \
+    chown -R redis:redis /data/redis
+
+## 创建一个redis.conf文件，打开集群相关配置，默认端口不写的话为6379
+RUN echo "protected-mode no" > /etc/redis.conf
+
+# Expose the ports for redis.
+EXPOSE 6379
+
+COPY start.sh /export/servers/redis/start.sh
+RUN  chmod +x /export/servers/redis/start.sh
+RUN  /export/servers/redis/start.sh
