@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM registry.cn-shenzhen.aliyuncs.com/sjroom/alpine-base
 ENV REDIS_VERSION=4.0.11-r0
 
 # Install redis.
