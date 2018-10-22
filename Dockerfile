@@ -16,4 +16,7 @@ EXPOSE 6379
 
 COPY start.sh /export/servers/redis/start.sh
 RUN  chmod +x /export/servers/redis/start.sh
-RUN  /export/servers/redis/start.sh
+
+#启动、停止脚本(sprintboot)
+RUN echo "sh /export/servers/redis/start.sh" >> /export/servers/script/start.sh
+# RUN echo "sh /export/App/service.sh stop" >> /export/servers/script/stop.sh
