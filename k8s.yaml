@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: alpine-redis-single
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: alpine-redis-single
+    spec:
+      containers:
+        - name: alpine-redis-single
+          image: registry.cn-shenzhen.aliyuncs.com/sjroom/alpine-redis-single
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alpine-redis-single
+spec:
+  type: NodePort
+  ports:
+    - port: 6379
+      nodePort: 30005
+  selector:
+        name: alpine-redis-single
+# https://raw.githubusercontent.com/zw23534572/alpine-redis-single/master/k8s.yaml

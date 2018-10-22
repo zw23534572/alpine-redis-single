@@ -1,5 +1,5 @@
 FROM alpine:edge
-ENV REDIS_VERSION=4.0.10-r0
+ENV REDIS_VERSION=4.0.11-r0
 
 # Install redis.
 RUN apk upgrade --update --no-cache && \
