@@ -21,7 +21,7 @@ spec:
   type: NodePort
   ports:
     - port: 6379
-      nodePort: 30005
+      nodePort: 6379
   selector:
         name: alpine-redis-single
 # https://raw.githubusercontent.com/zw23534572/alpine-redis-single/master/k8s.yaml
